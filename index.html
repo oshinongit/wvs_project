@@ -77,14 +77,18 @@
            
             The idea here is that you can view the world map and get color-based indications of the WVS value. The slider at the bottom can be used to toggle between the different waves of survey data.
 
-            <em>The darker red a country is, the higher the WVS value</em> See the illustration below.
+            <em>The darker red a country is, the higher the WVS value</em>
 
 
             Select the countries that seems interesting by clicking on them in the map,
             then click on the detail button in the corner to explore them further.
 
           </p>
-          <p><b>Guide</b>
+          <p><b>Guide</b><br />
+            Each value statement is graded by the following scale: <br />
+            never be justified, or
+something in between. <b>Never 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 Always</b>
+            <br />
             <br />
             Wave 6 (2010-2014)<br />
             Wave 5 (2005-2009)<br />
@@ -102,7 +106,7 @@
         <a href="#" id="detail-guide" class="list-group-item list-group-item-action bg-light d-none">
           <p><b>Notes</b>
             <br />
-            Here in the detail view the aim was to have the user further explore into the value differences between the selected countries. UNFORTUNTELY the bar chart does not work. The proportions are possibly correct but are not receiving the correct yAxis coordinate which makes makes the visuals borked.</br> 
+            In this view you can still change the slider to experience the value fluctuations over the different waves.</br> 
 
           </p>
 
@@ -138,6 +142,12 @@
       </nav>
 
       <div id="mapView" class="container-fluid">
+        <p><b>Discovery</b>
+          <br />
+          Starting off we can start by choosing a value that seems to be interesting, for example homosexuality. When viewing the first wave(wave2) the majority of the 30 countries included in the dataset seem to be less open to being gay. However as we proceed to drag the slider towards more modern times we can see the more saturated shades of red indicating an increased acceptance of homosexuality. Some interesting observations to be made(out of many:)) are that Sweden seems to have remained more or less the same on its opinion of homosexuality since the period 1995-1998. Russia presents a widely different case where the values seem to have fluctuated quite a bit between each survey wave. Peaking at wave4 and by wave6 the country seems to have almost return to their initial values exhibited in wave2.</br> 
+
+        </p>
+
         <svg class="border shadow rounded" id="theWorld" width="1600" height="960"></svg>
         <div id="tooltip" style="opacity:0; 
         position: absolute; 
@@ -153,6 +163,12 @@
         transition: opacity 1s; "></div>
       </div>
       <div id="detailView" class="container-fluid d-none">
+        <p>OBS! You need to have selected some countries from the world map for the chart to show up</p>
+        <p>
+          <b>Ambition</b></br>
+          Here in the detail view the aim was to have the user further explore into the value differences between the selected countries. UNFORTUNTELY the bar chart does not work. The proportions are possibly correct but are not receiving the correct yAxis coordinate which makes makes the chart show false data.</br> 
+
+        </p>
         <div id="tooltipBubble" style="opacity:0; 
         position: absolute; 
         text-align: center;     
