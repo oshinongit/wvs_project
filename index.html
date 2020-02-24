@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>WVS comparer</title>
+
+  <!-- Bootstrap core CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Custom styles for this template -->
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+  <link href="index.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">
+        <h5>Toolkit</h5>
+      </div>
+
+      <div class="list-group list-group-flush">
+
+        <a href="#" class="list-group-item list-group-item-action bg-light">
+          <b>Value selection</b>
+          <select id="emissionSelector" class="form-control" onchange="mount()">
+            <option value="abortion" id="optCH4">Abortion</option>
+            <option value="suicide" id="optIndCon">Suicide</option>
+            <option value="bribe" id="opt4">Someone accepting a bribe</option>
+            <option value="prost" id="opt5">Prostitution</option>
+            <option value="homo" id="opt6">Homosexuality</option>
+            <option value="taxes" id="opt7">Cheating on taxes</option>
+            <option value="gov" id="opt8">Claiming government benefits to which you are not entitled</option>
+            <option value="divorce" id="opt10">Divorce</option>
+            <option value="transport" id="opt12">Avoiding a fare on public transport</option>
+
+
+
+          </select>
+
+
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">
+          <b>Selected countries</b>
+          <p><small>Click on a country in the map to select it.</small></p>
+          <div id="selectedCountries" class="custom-control mr-sm-2">
+          </div>
+
+        </a>
+
+        <a href="#" id="map-guide" class="list-group-item list-group-item-action bg-light">
+          <p><b>Notes</b>   <br />
+           
+            The idea here is that you can view the world map and get color-based indications of the WVS value. The slider at the bottom can be used to toggle between the different waves of survey data.
+
+            <em>The darker red a country is, the higher the WVS value</em> See the illustration below.
+
+
+            Select the countries that seems interesting by clicking on them in the map,
+            then click on the detail button in the corner to explore them further.
+
+          </p>
+          <p><b>Guide</b>
+            <br />
+            Wave 6 (2010-2014)<br />
+            Wave 5 (2005-2009)<br />
+            Wave 4 (1999-2004)<br />
+            Wave 3 (1995-1998)<br />
+            Wave 2 (1990-1994) <br />
+
+          </p>   <br />   <br />
+
+         
+         
+
+        </a>
+
+        <a href="#" id="detail-guide" class="list-group-item list-group-item-action bg-light d-none">
+          <p><b>Notes</b>
+            <br />
+            Here in the detail view the aim was to have the user further explore into the value differences between the selected countries. UNFORTUNTELY the bar chart does not work. The proportions are possibly correct but are not receiving the correct yAxis coordinate which makes makes the visuals borked.</br> 
+
+          </p>
+
+        </a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-dark" id="menu-toggle">Toolkit</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <h4 class="navbar-title">WVS Survey World Map</h4>
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li id="mapActive" class="nav-item active">
+              <a class="nav-link" href="#" onclick="handleMapClick()">Map overview<span
+                  class="sr-only">(current)</span></a>
+            </li>
+            <li id="detailActive" class="nav-item">
+              <a id="detailButton" class="nav-link" href="#" onclick="handleDetailClick(); mount()">Detail</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div id="mapView" class="container-fluid">
+        <svg class="border shadow rounded" id="theWorld" width="1600" height="960"></svg>
+        <div id="tooltip" style="opacity:0; 
+        position: absolute; 
+        text-align: center;     
+        width: 60px;          
+        height: 28px;         
+        padding: 2px;       
+        font: 12px sans-serif;    
+        background: lightsteelblue; 
+        border: 0px;    
+        border-radius: 8px;     
+        pointer-events: none;
+        transition: opacity 1s; "></div>
+      </div>
+      <div id="detailView" class="container-fluid d-none">
+        <div id="tooltipBubble" style="opacity:0; 
+        position: absolute; 
+        text-align: center;     
+        width: 120px;          
+        height: 90px;         
+        padding: 2px;       
+        font: 12px sans-serif;    
+        background: lightsteelblue; 
+        border: 0px;    
+        border-radius: 8px;     
+        pointer-events: none;
+        transition: opacity 1s; "></div>
+
+        <!--<div id="chart_1" class="chart_1"></div>-->
+      </div>
+
+
+    </div>
+    <!-- /#page-content-wrapper -->
+    <nav id="footer" class="navbar fixed-bottom navbar-light bg-light border-top">
+      <button id="example" type="button" class="btn btn-dark">
+        <b id="sliderValue"></b>
+      </button>
+      <div class="container text-center">
+
+        <span class="font-weight-bold indigo-text mr-2 mt-1">Wave 2</span>
+        <form class="range-field w-75">
+          <input type="range" class="custom-range" min="2" max="6" value="2" class="slider" id="yearSlider"
+            onchange="mount()">
+        </form>
+        <span class="font-weight-bold indigo-text ml-2 mt-1">Wave 6</span>
+      </div>
+    </nav>
+
+  </div>
+  <!-- /#wrapper -->
+
+
+
+  <!-- Load d3.js -->
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+  <!-- Load view scripts -->
+  <script src="sliderYear.js"></script>
+  <script src="world_map.js"></script>
+  <!--<script src="bubbleChart.js"></script>-->
+  <script src="handleViewClick.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function (e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+</body>
+
+</html>

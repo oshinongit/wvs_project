@@ -1,0 +1,32 @@
+country,abortion,divorce,suicide,gov,transport,taxes,bribe,homo,prost,cont
+Argentina,3.41,5.88,2.16,2.22,2.45,2.01,1.37,4.45,3.49,SouthAmerica
+Australia,4.81,5.91,3.05,1.73,2.09,2.16,1.28,4.6,4.14,Australia
+Belarus,4.65,5.25,2.18,3.21,4.1,3.4,2.04,2.17,2.47,Europe
+Brazil,2.03,4.9,1.46,3.2,3.1,3.58,4.01,3.17,2.33,SouthAmerica
+Chile,2.2,4.4,2,3.45,2.67,2.21,1.71,3.32,2.82,SouthAmerica
+China,4.03,5.37,2.89,2.37,1.61,1.53,1.21,1.36,1.19,Asia
+Colombia,1.94,4.74,1.64,1.95,3.59,1.92,1.49,2.65,2.3,SouthAmerica
+Egypt,-,-,-,-,-,-,-,-,-,Africa
+India,2.55,3.05,1.82,1.99,1.54,1.63,1.54,1.74,1.87,Asia
+Iraq,-,-,-,-,-,-,-,-,-,Asia
+Japan,-,-,-,-,-,-,-,-,-,Asia
+Jordan,-,-,-,-,-,-,-,-,-,Asia
+Mexico,2.72,4.4,1.94,3.24,3.31,2.89,2.4,2.87,2.85,NorthAmerica
+Moldova,3.8,4.11,1.63,3.02,3.54,3.82,2.34,1.91,2.15,Europe
+Morocco,,-,-,-,-,-,-,-,-,Europe
+Nigeria,1.95,2.55,1.6,1.95,2.32,1.9,1.91,1.58,1.74,Africa
+Pakistan,-,-,-,-,-,-,-,-,-,Asia
+Peru,2.31,4.55,1.87,3.02,3.19,2.15,1.69,3.39,2.7,SouthAmerica
+Philippines,2.33,3.31,2.28,3.39,3.29,3,3.5,3.77,3,Asia
+Poland,-,-,-,-,-,-,-,-,-,Europe
+Russia,4.94,5.26,2.11,2.34,4.04,3.25,1.52,1.78,2.11,Asia
+South Africa,2.45,3.7,2.05,2.3,2.32,2.22,1.9,2.6,2.08,Africa
+South Korea,3.37,4.13,2.83,,2.64,1.79,1.51,2.13,2.29,Asia
+Spain,4.4,6.07,2.74,1.92,1.97,1.92,1.42,5.46,4.36,Europe
+Sweden,7.21,7.56,4.7,2.15,2.88,2.58,1.8,7.03,3.87,Europe
+Switzerland,5.02,6.39,3.68,2.07,2.34,2.6,1.54,6.45,5.32,Europe
+Taiwan,2.93,3.9,2.25,2.37,2.05,1.96,1.57,2.06,1.96,Asia
+Turkey,-,-,-,-,-,-,-,-,-,Europe
+Ukraine,4.25,4.93,2.03,3.19,4.36,3.45,1.96,2.01,2.17,Europe
+USA,3.95,5.36,2.29,1.67,1.93,1.73,1.22,3.75,2.5,NorthAmerica
+Question,Abortion,Divorce,Suicide,Claiming government benefits to which you are not entitled,Avoiding a fare on public transport,Cheating on taxes,Someone accepting a bribe,Homosexuality,Prostitution,-

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+
+  <title>World Emissions comparer</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Custom styles for this template -->
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+  <link href="index.css" rel="stylesheet">
+
+</head>
+
+<body>
+  
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">World Emissions comparer</div>
+      <div class="list-group list-group-flush">
+      	
+        <a href="#" class="list-group-item list-group-item-action bg-light">
+        	Emissions selection
+        	<select id="emissionSelector" class="form-control" onchange="mount()" >
+  				<option value="ghg" id="optGHG">Total GHG Emissions Including LUCF (MtCO2e)</option>
+  				<option value="ch4" id="optCH4">Total CH4 (MtCO2e)</option>
+  				<option value="ind" id="optIndCon">Manufacturing Industries and Construction (MtCO2e)</option>
+			</select>
+
+
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">
+        	Selected countries
+        	<div id="selectedCountries" class="custom-control mr-sm-2">
+      		</div>
+
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        
+        <button class="btn btn-light" id="menu-toggle"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1024px-Hamburger_icon.svg.png" width="30" height="30"></img></button>
+        
+        <div class="navbar-nav ml-5 mt-2 mt-lg-0">
+        	<b id="sliderValue"></b>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="tooltip" 
+        style="opacity:0; 
+        position: absolute; 
+        text-align: center;			
+        width: 60px;					
+        height: 28px;					
+        padding: 2px;				
+        font: 12px sans-serif;		
+        background: lightsteelblue;	
+        border: 0px;		
+        border-radius: 8px;			
+        pointer-events: none;
+        transition: opacity 1s;	">HEJ</div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">  
+            <li id="mapActive" class="nav-item active">
+              <a class="nav-link" href="#" onclick="handleMapClick()">Map overview<span class="sr-only">(current)</span></a>
+            </li>
+            <li id="detailActive" class="nav-item">
+              <a id="detailButton" class="nav-link" href="#" onclick="handleDetailClick()">Detail</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      
+
+      <div id="mapView" class="container-fluid">
+        	<div id="column1" class="d-flex flex-column"> 
+
+
+  <!-- Create an element where the map will take place -->
+  
+  <div class="d-flex"> 
+      <svg class="border shadow rounded" id="theWorld" width="1600" height="960"></svg>
+      
+    </div> 
+
+	      </div>
+	      
+
+    </div>
+    <div id="detailView" class="container-fluid d-none">
+        	<div id="column1" class="d-flex flex-column"> 
+
+
+					<!-- Create chart element where country data will be shown-->
+          <div id="chart_1" class="chart_1"></div>
+	  		
+	      	</div>
+	      
+
+    </div>
+
+    <nav id="footer" class="navbar fixed-bottom navbar-light bg-light border-top">		
+	    <div class="container text-center">
+					<span class="font-weight-bold indigo-text mr-2 mt-1">1990</span>
+					<form class="range-field w-75">
+		    	<input type="range" class="custom-range" min="1990" max="2011" value="2011" class="slider" id="yearSlider" onchange="mount()">
+		    </form>
+		    	<span class="font-weight-bold indigo-text ml-2 mt-1">2011</span>
+	    </div>
+  	</nav>
+
+
+    
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Load d3.js -->
+	<script src="http://d3js.org/d3.v4.js"></script>
+	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+	<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+	<!-- Load view scripts -->
+	<script src="sliderYear.js"></script>
+  <script src="world_map.js"></script>
+  <script src="bubbleChart.js"></script>
+  <script src="handleViewClick.js"></script>
+
+  <!-- Menu Toggle Script -->
+
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+</body>
+
+</html>

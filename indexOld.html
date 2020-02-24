@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<meta charset="utf-8">
+	<title>Vis 2</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body class="d-flex flex-row-reverse">
+		
+
+
+
+
+
+	<div id="column1" class="d-flex flex-column"> 
+		<div class="float-left">Float left on all viewport sizes</div><br>
+
+	<!-- Create an element where the map will take place -->
+	  <svg class="border" id="theWorld" width="1280" height="960"></svg>
+	 
+	  <div style="margin-left: 20%; margin-right: 20%;" class="colorscaleContainer d-flex flex-column justify-content-center">
+		<div class="rounded-top w-25" style="background-color:#fcbba1;">1</div>
+		  <div class="w-25" style="background-color:#fc9272;">2</div>
+		  <div class="w-25" style="background-color:#fb6a4a;">3</div>
+		  <div class="w-25" style="background-color:#ef3b2c;">4</div>
+		  <div class="rounded-bottom w-25" style="background-color:#cb181d;">5</div>
+  	</div s>
+  	<div class="slidecontainer">
+    	<input type="range" min="1990" max="2011" value="2011" class="slider" id="yearSlider" onchange="mount()">
+    	<p>Value: <span id="sliderValue"></span></p>
+  	</div>
+
+	<!-- Create chart element where country data will be shown-->
+	<div id="chart_1" class="chart_1"></div>
+	
+
+	<!-- Elements for charts  -->
+	<div>
+		<h3>Emissions & GDP per capita</h3>
+		<div id="chart_2"></div>
+	</div>
+
+	<div>
+		<h3>Population & GDP </h3>
+		<div id="chart_3"></div>
+	</div>
+</div>
+</body>
+
+
+
+
+<!-- Load d3.js -->
+<script src="http://d3js.org/d3.v4.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+<!-- Load view scripts -->
+<script src="sliderYear.js"></script>
+<script src="world_map.js"></script>
+
+ 
+<!-- <script src="scatterplotcharts.js"></script>
+ -->
+</html>
+
+
+   

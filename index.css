@@ -1,0 +1,57 @@
+/*.zoomIn {
+    transform: scaleY(1.5);
+    transform: scaleX(1.5);
+  }
+
+.container-fluid{
+	background-color: !important black;
+}
+
+.zindex66 {
+  z-index: 66;
+}
+
+*/
+
+/*html, body { margin:0; padding:0; overflow:hidden }
+#theWorld {
+	position:fixed; top:0; left:0; height:100%; width:100%}*/
+
+#explanation-image {
+	width:45%;
+	margin-top: 2rem;
+	margin-bottom: 10rem;
+}
+
+#explanation-image-bubble {
+	width:100%;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+
+.navbar-title {
+    position: absolute;
+    width: 60%;
+    left: 10rem;
+    right: 20rem;
+    text-align: center;
+    margin: auto;
+    padding-top:0px;
+
+
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+/*#button {
+	position: absolute;
+	left: 40rem;
+	top: 40rem;
+}
+
+#mapView{
+	position: relative;
+}*/
